@@ -1,7 +1,10 @@
-export default function Page() {
+import MovieDetails from "@/components/movies/details/movie-details";
+import { DetailsProps } from "@/lib/definitions";
+
+export default function Page({ params }: DetailsProps) {
   return (
     <div>
-      <h1>details</h1>
+      <MovieDetails params={params} />
     </div>
   );
 }

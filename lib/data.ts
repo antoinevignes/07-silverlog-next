@@ -63,3 +63,25 @@ export async function fetchUpcomingMovies(page: number) {
     throw new Error("Failed to fetch movies");
   }
 }
+
+export async function fetchMovieById(id: number) {
+  const options = {
+    method: "GET",
+    headers: {
+      accept: "application/json",
+      Authorization: `Bearer ${process.env.TMDB_KEY}`,
+    },
+  };
+
+  try {
+    const response = await fetch(
+      `https://api.themoviedb.org/3/movie/${id}?language=en-US`,
+      options
+    );
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    throw new Error("Cannot find movie");
+  }
+}
