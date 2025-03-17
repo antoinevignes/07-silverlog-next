@@ -2,13 +2,11 @@ import Link from "next/link";
 import {
   NavigationMenu,
   NavigationMenuContent,
-  NavigationMenuIndicator,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
-  NavigationMenuViewport,
 } from "@/components/ui/navigation-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
@@ -28,6 +26,18 @@ export default function Navbar() {
               <Link href="/movies/popular" legacyBehavior passHref>
                 <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                   Popular
+                </NavigationMenuLink>
+              </Link>
+
+              <Link href="/movies/top-rated" legacyBehavior passHref>
+                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                  Top Rated
+                </NavigationMenuLink>
+              </Link>
+
+              <Link href="/movies/upcoming" legacyBehavior passHref>
+                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                  Upcoming
                 </NavigationMenuLink>
               </Link>
             </NavigationMenuContent>
