@@ -33,7 +33,7 @@ export default async function MovieDetails({ params }: DetailsProps) {
               />
             )}
           </div>
-          <div>
+          <div className="flex flex-col gap-4 max-w-[50vw]">
             <h1 className="font-bold text-6xl">{movie.title}</h1>
             <p className="w-[50vw]">{movie.overview}</p>
           </div>
