@@ -1,9 +1,7 @@
 import { fetchMovieById } from "@/lib/data";
-import { DetailsProps } from "@/lib/definitions";
 import Image from "next/image";
 
-export default async function MovieDetails({ params }: DetailsProps) {
-  const id = Number(params.id);
+export default async function MovieDetails({ id }: { id: number }) {
   const movie = await fetchMovieById(id);
   const backdropUrl = `https://image.tmdb.org/t/p/original${movie.backdrop_path}`;
 

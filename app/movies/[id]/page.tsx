@@ -1,10 +1,18 @@
 import MovieDetails from "@/components/movies/details/movie-details";
-import { DetailsProps } from "@/lib/definitions";
 
-export default function Page({ params }: DetailsProps) {
+export default async function Page(props: {
+  params?: Promise<{
+    id?: string;
+  }>;
+}) {
+  const params = await props.params;
+  const id = Number(params?.id);
+
+  console.log(params);
+
   return (
     <div>
-      <MovieDetails params={params} />
+      <MovieDetails id={id} />
     </div>
   );
 }
