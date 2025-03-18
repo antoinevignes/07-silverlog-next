@@ -1,5 +1,5 @@
-import MovieList from "./movie-list";
-import PaginationComp from "../pagination";
+import MovieList from "../movie-list";
+import PaginationComp from "../shadcn/pagination";
 import { fetchPopularMovies } from "@/lib/data";
 
 export default async function PopularMovies({

@@ -9,6 +9,7 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { ModeToggle } from "../shadcn/mode-toggle";
 
 export default function Navbar() {
   return (
@@ -45,10 +46,14 @@ export default function Navbar() {
         </NavigationMenuList>
       </NavigationMenu>
 
-      <Avatar>
-        <AvatarImage src="https://github.com/shadcn.png" />
-        <AvatarFallback>CN</AvatarFallback>
-      </Avatar>
+      <div className="flex gap-10 items-center">
+        <Avatar>
+          <AvatarImage src="https://github.com/shadcn.png" />
+          <AvatarFallback>CN</AvatarFallback>
+        </Avatar>
+
+        <ModeToggle />
+      </div>
     </nav>
   );
 }

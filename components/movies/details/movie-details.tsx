@@ -1,11 +1,24 @@
-import { fetchMovieById } from "@/lib/data";
+import { fetchMovieById, fetchMovieCredits } from "@/lib/data";
 import { ImageOff } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
 export default async function MovieDetails({ id }: { id: number }) {
   const movie = await fetchMovieById(id);
+  const credits = await fetchMovieCredits(id);
   const backdropUrl = `https://image.tmdb.org/t/p/original${movie.backdrop_path}`;
+
+  // console.log(movie);
+  console.log(credits);
+
+  const director = credits.crew.find(
+    (member: { job: string }) => member.job === "Director"
+  );
+
+  console.log(director);
+
+  const fullDate = new Date(movie.release_date);
+  const year = fullDate.getFullYear();
 
   return (
     <div className="relative h-screen">
@@ -42,7 +55,15 @@ export default async function MovieDetails({ id }: { id: number }) {
             )}
           </div>
           <div className="flex flex-col gap-4 max-w-[50vw]">
-            <h1 className="font-bold text-6xl">{movie.title}</h1>
+            <h1 className="font-bold text-6xl">
+              {movie.title} ({year})
+            </h1>
+            <p className="text-xl">
+              Directed by{" "}
+              <Link href={`/people/${director.id}`} className="hover:underline">
+                {director.name}
+              </Link>
+            </p>
             <p>{movie.overview}</p>
           </div>
         </div>

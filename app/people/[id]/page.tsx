@@ -1,4 +1,4 @@
-import MovieDetails from "@/components/movies/details/movie-details";
+import PeopleDetails from "@/components/people/people-details";
 
 export default async function Page(props: {
   params?: Promise<{
@@ -8,7 +8,5 @@ export default async function Page(props: {
   const params = await props.params;
   const id = Number(params?.id);
 
-  // console.log(params);
-
-  return <MovieDetails id={id} />;
+  return <PeopleDetails id={id} />;
 }

@@ -1,6 +1,6 @@
 import { fetchTopMovies } from "@/lib/data";
-import MovieList from "./movie-list";
-import PaginationComp from "../pagination";
+import MovieList from "../movie-list";
+import PaginationComp from "../shadcn/pagination";
 
 export default async function TopMovies({
   currentPage,

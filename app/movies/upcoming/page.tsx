@@ -1,5 +1,5 @@
 import UpcomingMovies from "@/components/movies/upcoming-movies";
-import ListSkeleton from "@/components/skeletons/list-skeleton";
+import ListSkeleton from "@/components/shadcn/skeletons/list-skeleton";
 import { Suspense } from "react";
 
 export default async function Page(props: {
