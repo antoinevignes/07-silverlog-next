@@ -1,4 +1,5 @@
 import UpcomingMovies from "@/components/movies/upcoming-movies";
+import ListSkeleton from "@/components/skeletons/list-skeleton";
 import { Suspense } from "react";
 
 export default async function Page(props: {
@@ -15,7 +16,7 @@ export default async function Page(props: {
         Upcoming movies
       </h1>
 
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<ListSkeleton />}>
         <UpcomingMovies currentPage={currentPage} />
       </Suspense>
     </div>
