@@ -16,6 +16,7 @@ export async function fetchPopularMovies(page: number) {
     const data = await response.json();
     return data;
   } catch (error) {
+    console.error(error);
     throw new Error("Failed to fetch movies");
   }
 }
@@ -38,6 +39,7 @@ export async function fetchTopMovies(page: number) {
     const data = await response.json();
     return data;
   } catch (error) {
+    console.error(error);
     throw new Error("Failed to fetch movies");
   }
 }
@@ -60,6 +62,7 @@ export async function fetchUpcomingMovies(page: number) {
     const data = await response.json();
     return data;
   } catch (error) {
+    console.error(error);
     throw new Error("Failed to fetch movies");
   }
 }
@@ -82,6 +85,7 @@ export async function fetchMovieById(id: number) {
     const data = await response.json();
     return data;
   } catch (error) {
+    console.error(error);
     throw new Error("Cannot find movie");
   }
 }

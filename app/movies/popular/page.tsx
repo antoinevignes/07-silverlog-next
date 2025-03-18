@@ -7,6 +7,7 @@ export default async function Page(props: {
   }>;
 }) {
   const searchParams = await props.searchParams;
+  const currentPage = Number(searchParams?.page) || 1;
 
   return (
     <div className="flex flex-col items-center mt-10 gap-10">
@@ -15,7 +16,7 @@ export default async function Page(props: {
       </h1>
 
       <Suspense fallback={<div>Loading...</div>}>
-        <PopularMovies searchParams={searchParams} />
+        <PopularMovies currentPage={currentPage} />
       </Suspense>
     </div>
   );

@@ -9,12 +9,6 @@ export type Movies = {
   total_pages: number;
 };
 
-export type SearchProps = {
-  searchParams: {
-    page: number;
-  };
-};
-
 export type DetailsProps = {
   params: {
     id: string;

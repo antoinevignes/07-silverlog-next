@@ -1,11 +1,12 @@
 import { fetchTopMovies } from "@/lib/data";
 import MovieList from "./movie-list";
 import PaginationComp from "../pagination";
-import { SearchProps } from "@/lib/definitions";
 
-export default async function TopMovies({ searchParams }: SearchProps) {
-  const currentPage = Number(searchParams?.page) || 1;
-
+export default async function TopMovies({
+  currentPage,
+}: {
+  currentPage: number;
+}) {
   const movies = await fetchTopMovies(currentPage);
 
   // console.log(movies);
