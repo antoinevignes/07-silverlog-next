@@ -1,4 +1,5 @@
 import { fetchMovieById } from "@/lib/data";
+import { ImageOff } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -26,7 +27,7 @@ export default async function MovieDetails({ id }: { id: number }) {
       <div className="absolute inset-0 bg-black/65">
         <div className="flex justify-center items-center gap-10 h-full text-neutral-50">
           <div className="w-[400px] h-[600px] rounded-md">
-            {movie.poster_path && (
+            {movie.poster_path ? (
               <Image
                 src={`https://image.tmdb.org/t/p/w400/${movie.poster_path}`}
                 width={400}
@@ -34,6 +35,10 @@ export default async function MovieDetails({ id }: { id: number }) {
                 alt={movie.title}
                 className="w-full h-full object-cover rounded-md"
               />
+            ) : (
+              <div className="w-full h-full flex items-center justify-center border-1 rounded-md bg-neutral-100">
+                <ImageOff size={56} className="text-neutral-700" />
+              </div>
             )}
           </div>
           <div className="flex flex-col gap-4 max-w-[50vw]">

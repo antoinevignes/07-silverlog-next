@@ -31,7 +31,7 @@ export default function MovieList({ movies }: { movies: Movies }) {
                     />
                   ) : (
                     <div className="w-full h-full flex items-center justify-center border-1 rounded-md">
-                      <ImageOff size={56} className="opacity-60" />
+                      <ImageOff size={56} className="text-neutral-700" />
                     </div>
                   )}
                 </div>
