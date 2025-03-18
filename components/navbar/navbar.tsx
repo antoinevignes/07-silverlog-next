@@ -42,18 +42,6 @@ export default function Navbar() {
               </Link>
             </NavigationMenuContent>
           </NavigationMenuItem>
-
-          <NavigationMenuItem>
-            <NavigationMenuTrigger>TV Shows</NavigationMenuTrigger>
-
-            <NavigationMenuContent>
-              <Link href="/popular" legacyBehavior passHref>
-                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                  Popular
-                </NavigationMenuLink>
-              </Link>
-            </NavigationMenuContent>
-          </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
 
