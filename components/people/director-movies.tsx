@@ -9,18 +9,15 @@ import {
 } from "@/components/ui/tooltip";
 import { ImageOff } from "lucide-react";
 
-export default function MovieList({ movies }: { movies: Movies }) {
+export default function DirectorMovies({ movies }: { movies: Movies }) {
   return (
     <div className="grid grid-cols-4 gap-5">
-      {movies.results.map((movie) => (
+      {movies.map((movie) => (
         <TooltipProvider key={movie.id}>
           <Tooltip>
             <TooltipTrigger>
-              <Link
-                href={`/movies/${movie.id}`}
-                className="w-[200px] h-[300px]"
-              >
-                <div className="w-[200px] h-[300px] border border-transparent hover:border-neutral-900 dark:hover:border-neutral-200 rounded-md">
+              <Link href={`/movies/${movie.id}`}>
+                <div className="w-[130px] h-[190px] border border-transparent hover:border-neutral-900 dark:hover:border-neutral-200 rounded-md">
                   {movie.poster_path ? (
                     <Image
                       src={`https://image.tmdb.org/t/p/w200/${movie.poster_path}`}

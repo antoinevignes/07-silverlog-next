@@ -21,12 +21,6 @@ export default async function MovieDetails({ id }: { id: number }) {
 
   return (
     <div className="relative h-screen">
-      <Link
-        href="#"
-        className="absolute top-10 left-10 z-10 text-neutral-50 hover:text-neutral-300"
-      >
-        ← Back
-      </Link>
       {movie.backdrop_path && (
         <Image
           src={backdropUrl}

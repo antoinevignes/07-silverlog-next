@@ -95,3 +95,18 @@ export async function fetchPeopleDetails(id: number) {
     throw new Error("Cannot find movie");
   }
 }
+
+export async function fetchPeopleMovies(id: number) {
+  try {
+    const response = await fetch(
+      `https://api.themoviedb.org/3/person/${id}/movie_credits?language=en-US`,
+      options
+    );
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(error);
+    throw new Error("Cannot find movie");
+  }
+}
