@@ -1,3 +1,4 @@
+import { Separator } from "@/components/ui/separator";
 import { fetchMovieById, fetchMovieCredits } from "@/lib/data";
 import { ImageOff } from "lucide-react";
 import Image from "next/image";
@@ -9,13 +10,11 @@ export default async function MovieDetails({ id }: { id: number }) {
   const backdropUrl = `https://image.tmdb.org/t/p/original${movie.backdrop_path}`;
 
   // console.log(movie);
-  console.log(credits);
+  // console.log(credits);
 
   const director = credits.crew.find(
     (member: { job: string }) => member.job === "Director"
   );
-
-  console.log(director);
 
   const fullDate = new Date(movie.release_date);
   const year = fullDate.getFullYear();
@@ -24,7 +23,7 @@ export default async function MovieDetails({ id }: { id: number }) {
     <div className="relative h-screen">
       <Link
         href="#"
-        className="absolute top-10 left-10 z-10 text-white hover:text-neutral-300"
+        className="absolute top-10 left-10 z-10 text-neutral-50 hover:text-neutral-300"
       >
         ← Back
       </Link>
@@ -54,16 +53,24 @@ export default async function MovieDetails({ id }: { id: number }) {
               </div>
             )}
           </div>
-          <div className="flex flex-col gap-4 max-w-[50vw]">
+          <div className="flex flex-col gap-4 max-w-[50vw] md:max-w-[30vw]">
             <h1 className="font-bold text-6xl">
               {movie.title} ({year})
             </h1>
             <p className="text-xl">
               Directed by{" "}
-              <Link href={`/people/${director.id}`} className="hover:underline">
-                {director.name}
-              </Link>
+              {director ? (
+                <Link
+                  href={`/people/${director.id}`}
+                  className="hover:underline"
+                >
+                  {director.name}
+                </Link>
+              ) : (
+                "Unknown"
+              )}
             </p>
+            <Separator className="bg-neutral-50" />
             <p>{movie.overview}</p>
           </div>
         </div>

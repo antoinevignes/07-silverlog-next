@@ -11,7 +11,7 @@ export default async function PeopleDetails({ id }: { id: number }) {
   return (
     <div className="h-screen flex justify-center items-center gap-10">
       <div>
-        <h1 className="text-3xl font-bold mb-10">{details.name}</h1>
+        <h1 className="text-6xl font-bold mb-10">{details.name}</h1>
         <p className="mb-10">
           Born in : {details.place_of_birth}
           <br />
