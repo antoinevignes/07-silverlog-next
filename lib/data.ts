@@ -110,3 +110,18 @@ export async function fetchPeopleMovies(id: number) {
     throw new Error("Cannot find movie");
   }
 }
+
+export async function searchMovies(query: string, page: number) {
+  try {
+    const response = await fetch(
+      `https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false&language=en-US&page=${page}`,
+      options
+    );
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(error);
+    throw new Error("Cannot find movie");
+  }
+}

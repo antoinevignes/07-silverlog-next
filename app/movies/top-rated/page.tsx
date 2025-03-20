@@ -16,7 +16,7 @@ export default async function Page(props: {
         Top rated movies
       </h1>
 
-      <Suspense fallback={<ListSkeleton />}>
+      <Suspense fallback={<ListSkeleton width={200} height={300} />}>
         <TopMovies currentPage={currentPage} />
       </Suspense>
     </div>
