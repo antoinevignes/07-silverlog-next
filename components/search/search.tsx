@@ -1,12 +1,16 @@
 "use client";
 
-import { SearchIcon } from "lucide-react";
+import { SearchIcon, X } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
+import { useState } from "react";
 import { useDebouncedCallback } from "use-debounce";
+import { Input } from "../ui/input";
+import { Button } from "../ui/button";
 
-export default function Search({ placeholder }: { placeholder: string }) {
+export default function Search() {
   const searchParams = useSearchParams();
   const { replace } = useRouter();
+  const [isExpanded, setIsExpanded] = useState(false);
 
   const handleSearch = useDebouncedCallback((term) => {
     const params = new URLSearchParams(searchParams);
@@ -19,20 +23,34 @@ export default function Search({ placeholder }: { placeholder: string }) {
     replace(`/search?${params.toString()}`);
   }, 300);
 
+  const handleClick = () => {
+    if (!isExpanded) {
+      setIsExpanded(true);
+    } else {
+      setIsExpanded(false);
+    }
+  };
+
   return (
-    <div className="relative flex flex-1 flex-shrink-0">
-      <label htmlFor="search" className="sr-only">
-        Search
-      </label>
-      <input
-        className="peer block w-full rounded-md border py-[9px] pl-10 text-sm bg-neutral-900"
-        placeholder={placeholder}
+    <div className="flex items-center gap-1">
+      <Input
+        placeholder="Search..."
+        defaultValue={searchParams.get("query")?.toString()}
+        className={`transition-all duration-300 ease-in-out ${
+          isExpanded ? "w-60 opacity-100" : "w-0 opacity-0 p-0"
+        }`}
         onChange={(e) => {
           handleSearch(e.target.value);
         }}
-        defaultValue={searchParams.get("query")?.toString()}
+        ref={(input) => {
+          if (isExpanded && input) {
+            input.focus();
+          }
+        }}
       />
-      <SearchIcon className="absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2" />
+      <Button variant={"ghost"} onClick={handleClick}>
+        {isExpanded ? <X /> : <SearchIcon className="h-4 w-4" />}
+      </Button>
     </div>
   );
 }

@@ -16,9 +16,9 @@ export default async function Page(props: {
   const movies = await searchMovies(query, currentPage);
   const totalPages = movies.total_pages;
 
-  console.log(query);
+  //   console.log(query);
 
-  console.log(movies);
+  //   console.log(movies);
 
   return (
     <div className="flex flex-col items-center mt-10 gap-10 min-h-[82vh]">

@@ -50,8 +50,10 @@ export default function Navbar() {
       </div>
 
       <div className="flex gap-5 items-center justify-end">
-        <Search placeholder="Search..." />
-        <ModeToggle />
+        <div className="flex gap-2">
+          <Search />
+          <ModeToggle />
+        </div>
         <Avatar>
           <AvatarImage src="https://github.com/shadcn.png" />
           <AvatarFallback>CN</AvatarFallback>
