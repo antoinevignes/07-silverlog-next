@@ -24,6 +24,7 @@ export default async function Page(props: {
       fetchMovieCredits(id),
     ]);
   } catch (error) {
+    console.error(error);
     notFound();
   }
 

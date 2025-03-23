@@ -30,6 +30,7 @@ export default async function Page(props: {
           b.vote_average - a.vote_average
       );
   } catch (error) {
+    console.error(error);
     notFound();
   }
 
