@@ -4,4 +4,6 @@ export type Movie = {
   poster_path: string;
 };
 
-export type Movies = Movie[];
+export type Movies = {
+  results: Movie[];
+};
