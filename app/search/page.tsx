@@ -21,7 +21,7 @@ export default async function Page(props: {
   return (
     <div className="flex flex-col items-center mt-10 gap-10 min-h-[82vh]">
       <h1 className="font-bold text-2xl border-b-1 border-neutral-900 dark:border-neutral-200">
-        Search results for "{query}"
+        Search results for &quot;{query}&quot;
       </h1>
 
       {movies.total_results > 0 ? (
