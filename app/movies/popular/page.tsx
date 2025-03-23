@@ -1,6 +1,18 @@
-import PopularMovies from "@/components/movies/popular-movies";
+import MovieList from "@/components/movie-list";
+import PaginationComp from "@/components/shadcn/pagination";
 import ListSkeleton from "@/components/shadcn/skeletons/list-skeleton";
+import { fetchPopularMovies } from "@/lib/data";
 import { Suspense } from "react";
+
+async function MovieListWrapper({ currentPage }: { currentPage: number }) {
+  const movies = await fetchPopularMovies(currentPage);
+  return (
+    <>
+      <MovieList movies={movies} />
+      <PaginationComp total_pages={movies.total_pages} />
+    </>
+  );
+}
 
 export default async function Page(props: {
   searchParams?: Promise<{
@@ -17,7 +29,7 @@ export default async function Page(props: {
       </h1>
 
       <Suspense fallback={<ListSkeleton width={200} height={300} />}>
-        <PopularMovies currentPage={currentPage} />
+        <MovieListWrapper currentPage={currentPage} />
       </Suspense>
     </div>
   );

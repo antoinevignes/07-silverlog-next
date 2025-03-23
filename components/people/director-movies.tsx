@@ -1,4 +1,4 @@
-import { Movies } from "@/lib/definitions";
+import { Movie, Movies } from "@/lib/definitions";
 import Image from "next/image";
 import Link from "next/link";
 import {

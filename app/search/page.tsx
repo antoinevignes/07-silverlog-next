@@ -1,8 +1,6 @@
 import MovieList from "@/components/movie-list";
 import PaginationComp from "@/components/shadcn/pagination";
-import ListSkeleton from "@/components/shadcn/skeletons/list-skeleton";
 import { searchMovies } from "@/lib/data";
-import { Suspense } from "react";
 
 export default async function Page(props: {
   searchParams?: Promise<{
@@ -26,13 +24,11 @@ export default async function Page(props: {
         Search results for "{query}"
       </h1>
 
-      <Suspense fallback={<ListSkeleton width={200} height={300} />}>
-        {movies.total_results > 0 ? (
-          <MovieList movies={movies} />
-        ) : (
-          <p>No results matched the query...</p>
-        )}
-      </Suspense>
+      {movies.total_results > 0 ? (
+        <MovieList movies={movies} />
+      ) : (
+        <p>No results matched the query...</p>
+      )}
 
       <PaginationComp total_pages={totalPages} />
     </div>

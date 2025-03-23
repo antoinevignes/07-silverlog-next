@@ -1,6 +1,18 @@
-import UpcomingMovies from "@/components/movies/upcoming-movies";
+import MovieList from "@/components/movie-list";
+import PaginationComp from "@/components/shadcn/pagination";
 import ListSkeleton from "@/components/shadcn/skeletons/list-skeleton";
+import { fetchUpcomingMovies } from "@/lib/data";
 import { Suspense } from "react";
+
+async function UpcomingWrapper({ currentPage }: { currentPage: number }) {
+  const movies = await fetchUpcomingMovies(currentPage);
+  return (
+    <>
+      <MovieList movies={movies} />
+      <PaginationComp total_pages={movies.total_pages} />
+    </>
+  );
+}
 
 export default async function Page(props: {
   searchParams?: Promise<{
@@ -17,7 +29,7 @@ export default async function Page(props: {
       </h1>
 
       <Suspense fallback={<ListSkeleton width={200} height={300} />}>
-        <UpcomingMovies currentPage={currentPage} />
+        <UpcomingWrapper currentPage={currentPage} />
       </Suspense>
     </div>
   );
