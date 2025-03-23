@@ -1,4 +1,4 @@
-import { Movies } from "@/lib/definitions";
+import { Movie, Movies } from "@/lib/definitions";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/tooltip";
 import { ImageOff } from "lucide-react";
 
-export default function DirectorMovies({ movies }: { movies: Movies }) {
+export default function DirectorMovies({ movies }: { movies: Movie[] }) {
   return (
     <div className="grid grid-cols-4 gap-5">
       {movies.map((movie) => (
