@@ -3,6 +3,7 @@ import CollapsibleText from "@/components/ui/collapsible-text";
 import { fetchPeopleDetails, fetchPeopleMovies } from "@/lib/data";
 import { ImageOff } from "lucide-react";
 import Image from "next/image";
+import { notFound } from "next/navigation";
 
 export default async function Page(props: {
   params?: Promise<{
@@ -11,17 +12,30 @@ export default async function Page(props: {
 }) {
   const params = await props.params;
   const id = Number(params?.id);
-  const [details, movies] = await Promise.all([
-    fetchPeopleDetails(id),
-    fetchPeopleMovies(id),
-  ]);
 
-  const directedMovies = movies.crew
-    .filter((movie: { job: string }) => movie.job === "Director")
-    .sort(
-      (a: { vote_average: number }, b: { vote_average: number }) =>
-        b.vote_average - a.vote_average
-    );
+  if (!id || isNaN(id)) {
+    notFound();
+  }
+
+  let details, movies, directedMovies;
+  try {
+    [details, movies] = await Promise.all([
+      fetchPeopleDetails(id),
+      fetchPeopleMovies(id),
+    ]);
+    directedMovies = movies.crew
+      .filter((movie: { job: string }) => movie.job === "Director")
+      .sort(
+        (a: { vote_average: number }, b: { vote_average: number }) =>
+          b.vote_average - a.vote_average
+      );
+  } catch (error) {
+    notFound();
+  }
+
+  if (!details || !movies) {
+    notFound();
+  }
 
   const posterUrl = `https://image.tmdb.org/t/p/original${details.profile_path}`;
 

@@ -3,6 +3,7 @@ import { fetchMovieById, fetchMovieCredits } from "@/lib/data";
 import { ImageOff } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 
 export default async function Page(props: {
   params?: Promise<{
@@ -11,10 +12,24 @@ export default async function Page(props: {
 }) {
   const params = await props.params;
   const id = Number(params?.id);
-  const [movie, credits] = await Promise.all([
-    fetchMovieById(id),
-    fetchMovieCredits(id),
-  ]);
+
+  if (!id || isNaN(id)) {
+    notFound();
+  }
+
+  let movie, credits;
+  try {
+    [movie, credits] = await Promise.all([
+      fetchMovieById(id),
+      fetchMovieCredits(id),
+    ]);
+  } catch (error) {
+    notFound();
+  }
+
+  if (!movie || !credits) {
+    notFound();
+  }
 
   const backdropUrl = `https://image.tmdb.org/t/p/original${movie.backdrop_path}`;
 

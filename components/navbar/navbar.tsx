@@ -1,22 +1,19 @@
 import Link from "next/link";
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
-} from "@/components/ui/navigation-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { ModeToggle } from "../shadcn/mode-toggle";
 import Search from "../search/search";
 import { NavigationMenuDemo } from "../shadcn/navigation-menu/navigation-menu";
+import { Lusitana } from "next/font/google";
+
+const lusitana = Lusitana({
+  weight: ["400", "700"],
+  subsets: ["latin"],
+});
 
 export default function Navbar() {
   return (
     <nav className="p-6 grid grid-cols-3 items-center">
-      <Link href="/" className="font-bold text-4xl">
+      <Link href="/" className={`${lusitana.className} font-bold text-5xl`}>
         Silverlog
       </Link>
 

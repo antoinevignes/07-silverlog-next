@@ -12,7 +12,6 @@ export async function fetchPopularMovies(page: number) {
       `https://api.themoviedb.org/3/movie/popular?language=en-US&page=${page}`,
       options
     );
-    if (!response.ok) throw new Error(`HTTP ${response.status}`);
     const data = await response.json();
     return data;
   } catch (error) {
@@ -27,7 +26,6 @@ export async function fetchTopMovies(page: number) {
       `https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=${page}`,
       options
     );
-    if (!response.ok) throw new Error(`HTTP ${response.status}`);
     const data = await response.json();
     return data;
   } catch (error) {
@@ -42,7 +40,6 @@ export async function fetchUpcomingMovies(page: number) {
       `https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=${page}`,
       options
     );
-    if (!response.ok) throw new Error(`HTTP ${response.status}`);
     const data = await response.json();
     return data;
   } catch (error) {
@@ -57,12 +54,12 @@ export async function fetchMovieById(id: number) {
       `https://api.themoviedb.org/3/movie/${id}?language=en-US`,
       options
     );
-    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    if (!response.ok) return null;
     const data = await response.json();
     return data;
   } catch (error) {
     console.error(error);
-    throw new Error("Cannot find movie");
+    return null;
   }
 }
 
@@ -72,7 +69,6 @@ export async function fetchMovieCredits(id: number) {
       `https://api.themoviedb.org/3/movie/${id}/credits?language=en-US`,
       options
     );
-    if (!response.ok) throw new Error(`HTTP ${response.status}`);
     const data = await response.json();
     return data;
   } catch (error) {
@@ -87,7 +83,6 @@ export async function fetchPeopleDetails(id: number) {
       `https://api.themoviedb.org/3/person/${id}?language=en-US`,
       options
     );
-    if (!response.ok) throw new Error(`HTTP ${response.status}`);
     const data = await response.json();
     return data;
   } catch (error) {
@@ -102,7 +97,6 @@ export async function fetchPeopleMovies(id: number) {
       `https://api.themoviedb.org/3/person/${id}/movie_credits?language=en-US`,
       options
     );
-    if (!response.ok) throw new Error(`HTTP ${response.status}`);
     const data = await response.json();
     return data;
   } catch (error) {
@@ -117,7 +111,6 @@ export async function searchMovies(query: string, page: number) {
       `https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false&language=en-US&page=${page}`,
       options
     );
-    if (!response.ok) throw new Error(`HTTP ${response.status}`);
     const data = await response.json();
     return data;
   } catch (error) {
