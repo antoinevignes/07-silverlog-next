@@ -1,9 +1,10 @@
 import Link from "next/link";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { ModeToggle } from "../shadcn/mode-toggle";
 import Search from "../search/search";
-import { NavigationMenuDemo } from "../shadcn/navigation-menu/navigation-menu";
+
 import { Lusitana } from "next/font/google";
+import { DropdownMenuDemo } from "../profile/avatar-dropdown";
+import { NavigationMenuComp } from "../shadcn/navigation-menu/navigation-menu";
 
 const lusitana = Lusitana({
   weight: ["400", "700"],
@@ -18,7 +19,7 @@ export default function Navbar() {
       </Link>
 
       <div className="flex justify-center">
-        <NavigationMenuDemo />
+        <NavigationMenuComp />
       </div>
 
       <div className="flex gap-5 items-center justify-end">
@@ -26,10 +27,7 @@ export default function Navbar() {
           <Search />
           <ModeToggle />
         </div>
-        <Avatar>
-          <AvatarImage src="https://github.com/shadcn.png" />
-          <AvatarFallback>CN</AvatarFallback>
-        </Avatar>
+        <DropdownMenuDemo />
       </div>
     </nav>
   );

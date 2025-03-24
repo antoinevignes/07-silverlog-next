@@ -48,6 +48,20 @@ export async function fetchUpcomingMovies(page: number) {
   }
 }
 
+export async function fetchTrendingMovies() {
+  try {
+    const response = await fetch(
+      `https://api.themoviedb.org/3/trending/movie/day?language=en-US`,
+      options
+    );
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(error);
+    throw new Error("Failed to fetch movies");
+  }
+}
+
 export async function fetchMovieById(id: number) {
   try {
     const response = await fetch(
