@@ -67,27 +67,32 @@ export default function MovieDetails({
           </AccordionContent>
         </AccordionItem>
 
-        <AccordionItem value="item-2">
-          <AccordionTrigger>Cast</AccordionTrigger>
-          <AccordionContent>
-            {credits.cast.map((person, index) => (
-              <Badge className="m-1" key={index}>
-                {person.name}
-              </Badge>
-            ))}
-          </AccordionContent>
-        </AccordionItem>
+        {/* {credits.cast && credits.cast.length > 0 && (
+          <AccordionItem value="item-2">
+            <AccordionTrigger>Cast</AccordionTrigger>
+            <AccordionContent>
+              {credits.cast &&
+                credits.cast.map((person, index) => (
+                  <Badge className="m-1" key={index}>
+                    {person.name}
+                  </Badge>
+                ))}
+            </AccordionContent>
+          </AccordionItem>
+        )}
 
-        <AccordionItem value="item-3">
-          <AccordionTrigger>Crew</AccordionTrigger>
-          <AccordionContent>
-            {credits.crew.map((person, index) => (
-              <Badge className="m-1" key={index}>
-                {person.name}
-              </Badge>
-            ))}
-          </AccordionContent>
-        </AccordionItem>
+        {credits.crew && credits.crew.length > 0 && (
+          <AccordionItem value="item-3">
+            <AccordionTrigger>Crew</AccordionTrigger>
+            <AccordionContent>
+              {credits.crew.map((person, index) => (
+                <Badge className="m-1" key={index}>
+                  {person.name}
+                </Badge>
+              ))}
+            </AccordionContent>
+          </AccordionItem>
+        )} */}
       </Accordion>
     </div>
   );

@@ -1,12 +1,17 @@
 import MovieList from "@/components/movie-list";
 import ListSkeleton from "@/components/shadcn/skeletons/list-skeleton";
+import { auth } from "@/lib/auth";
 import { fetchTrendingMovies } from "@/lib/data";
+import { redirect } from "next/navigation";
 import { Suspense } from "react";
 
 export default async function Home() {
   const movies = await fetchTrendingMovies();
 
-  console.log(movies);
+  const session = await auth();
+  if (!session) redirect("/login");
+
+  console.log(session);
 
   return (
     <div className="flex flex-col justify-center items-center">

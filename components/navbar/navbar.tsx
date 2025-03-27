@@ -3,7 +3,7 @@ import { ModeToggle } from "../shadcn/mode-toggle";
 import Search from "../search/search";
 
 import { Lusitana } from "next/font/google";
-import { DropdownMenuDemo } from "../profile/avatar-dropdown";
+import { AccountDropdown } from "../profile/avatar-dropdown";
 import { NavigationMenuComp } from "../shadcn/navigation-menu/navigation-menu";
 
 const lusitana = Lusitana({
@@ -27,7 +27,7 @@ export default function Navbar() {
           <Search />
           <ModeToggle />
         </div>
-        <DropdownMenuDemo />
+        <AccountDropdown />
       </div>
     </nav>
   );
