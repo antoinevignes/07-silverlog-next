@@ -67,7 +67,7 @@ export default function MovieDetails({
           </AccordionContent>
         </AccordionItem>
 
-        {/* {credits.cast && credits.cast.length > 0 && (
+        {credits.cast && credits.cast.length > 0 && (
           <AccordionItem value="item-2">
             <AccordionTrigger>Cast</AccordionTrigger>
             <AccordionContent>
@@ -92,7 +92,7 @@ export default function MovieDetails({
               ))}
             </AccordionContent>
           </AccordionItem>
-        )} */}
+        )}
       </Accordion>
     </div>
   );
